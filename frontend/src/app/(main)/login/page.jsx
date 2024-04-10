@@ -37,7 +37,7 @@ const login = () => {
       }).catch((err) => {
         console.log(err);
       });
-      validationSchema: signupValidationSchema
+      validationSchema: loginValidationSchema
     }
   })
 

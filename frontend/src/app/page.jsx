@@ -61,7 +61,7 @@ const Home = () => {
                 </div>
                 <div className="grow ms-4">
                   <div className="font-semibold text-gray-800 dark:text-gray-200">
-                    Swastik Kashayp
+                    Swastik Kashyap
                   </div>
                   <div className="text-xs text-gray-500">
                     Full Stack Developer ; MERN | Digipodium

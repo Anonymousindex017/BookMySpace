@@ -16,7 +16,7 @@ const Navbar = () => {
                 href="#"
                 aria-label="Brand"
               >
-                Flexispace
+                Book My Space
               </a>
               <div className="md:hidden">
                 <button

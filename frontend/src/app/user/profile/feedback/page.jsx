@@ -9,7 +9,7 @@ const Feedback = () => {
     <div className="mx-auto max-w-2xl">
       <div className="text-center">
         <h2 className="text-xl text-gray-800 font-bold sm:text-3xl dark:text-white">
-          Post a comment
+          Post a feedback
         </h2>
       </div>
       {/* Card */}
