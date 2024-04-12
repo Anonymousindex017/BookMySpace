@@ -30,7 +30,9 @@ const signup = () => {
       email: '',
       contact: '',
       password: '',
-      cpassword: ''
+      cpassword: '',
+      rememberme:''
+
     },
     onSubmit: (values) => {
       console.log(values);
@@ -350,9 +352,10 @@ const signup = () => {
                   <div className="flex items-center">
                     <div className="flex">
                       <input
-                        id="remember-me"
-                        name="remember-me"
+                        id="rememberme"
                         type="checkbox"
+                        onChange={signupForm.handleChange}
+                        value={signupForm.values.rememberme}
                         className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                       />
                     </div>
@@ -364,7 +367,7 @@ const signup = () => {
                         I accept the{" "}
                         <a
                           className="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                          href="#"
+                          href="/termandcondition"
                         >
                           Terms and Conditions
                         </a>
