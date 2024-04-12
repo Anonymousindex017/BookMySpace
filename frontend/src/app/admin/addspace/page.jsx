@@ -1,21 +1,23 @@
 'use client';
 import { useFormik } from 'formik';
 import { enqueueSnackbar } from 'notistack';
-import React from 'react';
-import { array } from 'yup';
+import React, { useState } from 'react';
 
 const addspace = () => {
+
+  const [facilities, setFacilities] = useState([]);
 
   const addspaceForm = useFormik({
     initialValues: {
       category: '',
       location: '',
-      city:'',
-      state:'',
+      city: '',
+      state: '',
       area: '',
       price: ''
     },
     onSubmit: (values) => {
+      values.facilities = facilities;
       console.log(values);
 
       //sending request to backend
@@ -42,6 +44,22 @@ const addspace = () => {
     }
   })
 
+  const addFacility = () => {
+    setFacilities([...facilities, '']);
+  }
+
+  const removeFacility = (index) => {
+    setFacilities(facilities.filter((f, i) => i !== index))
+  }
+
+  const updateFacility = (index, value) => {
+    setFacilities(facilities.map((f, i) => {
+      if (i === index) {
+        return value;
+      }
+      return f;
+    }))
+  }
 
 
   return (
@@ -73,7 +91,7 @@ const addspace = () => {
                     id='category'
                     onChange={addspaceForm.handleChange}
                     value={addspaceForm.values.category}
-                    className="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                    className="border-2 py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
                     <option selected="">space</option>
                     <option> Classroom</option>
                     <option>Meeting Room</option>
@@ -82,7 +100,7 @@ const addspace = () => {
                     <option>Event Hall</option>
                     <option>Day pass</option>
                     <option></option>
-                    <option></option> 
+                    <option></option>
                     <option></option>
                   </select>
                 </div>
@@ -105,44 +123,44 @@ const addspace = () => {
                     className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     placeholder="Address"
                   ></textarea>
-                  <div className='grid grid-cols-2'> 
-                   <div className="mt-2 space-y-3">
-                  <select
-                    id='city'
-                    onChange={addspaceForm.handleChange}
-                    value={addspaceForm.values.city}
-                    className="py-2 px-3 pe-9 block w-50 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                    <option selected="">City</option>
-                    <option> Lucknow</option>
-                    <option>Kanpur</option>
-                    <option>Agra</option>
-                    <option>bengaluru</option>
-                    <option>Mumbai</option>
-                    <option>Imphal</option>
-                    <option>Dehradun</option>
-                    <option>Chennai</option>
+                  <div className='grid grid-cols-2'>
+                    <div className="mt-2 space-y-3">
+                      <select
+                        id='city'
+                        onChange={addspaceForm.handleChange}
+                        value={addspaceForm.values.city}
+                        className="py-2 px-3 pe-9 block w-50 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                        <option selected="">City</option>
+                        <option> Lucknow</option>
+                        <option>Kanpur</option>
+                        <option>Agra</option>
+                        <option>bengaluru</option>
+                        <option>Mumbai</option>
+                        <option>Imphal</option>
+                        <option>Dehradun</option>
+                        <option>Chennai</option>
 
-                  </select>
-                </div>
-                <div className="mt-2 space-y-3">
-                  <select
-                    id='state'
-                     onChange={addspaceForm.handleChange}
-                    value={addspaceForm.values.state}
-                    className="py-2 px-3 pe-9 block w-50 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                    <option selected="">State</option>
-                    <option>Uttar Pradesh</option>
-                    <option>Madhya Pradesh</option>
-                    <option>Karnataka</option>
-                    <option>tamilnaadu</option>
-                    <option>Maharashtra</option>
-                    <option>Manipur</option>
-                    <option>Punjab</option>
-                    <option>Tripura</option>
-                    <option>uttarakhand</option>
-                  </select>
-                </div>
-                </div>
+                      </select>
+                    </div>
+                    <div className="mt-2 space-y-3">
+                      <select
+                        id='state'
+                        onChange={addspaceForm.handleChange}
+                        value={addspaceForm.values.state}
+                        className="py-2 px-3 pe-9 block w-50 border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                        <option selected="">State</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Karnataka</option>
+                        <option>tamilnaadu</option>
+                        <option>Maharashtra</option>
+                        <option>Manipur</option>
+                        <option>Punjab</option>
+                        <option>Tripura</option>
+                        <option>uttarakhand</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
               {/* End Section */}
@@ -163,7 +181,7 @@ const addspace = () => {
                     className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     placeholder="By Square Feet"
                   />
-                   <input
+                  <input
                     id="price"
                     onChange={addspaceForm.handleChange}
                     value={addspaceForm.values.price}
@@ -172,7 +190,35 @@ const addspace = () => {
                     placeholder="price"
                   />
                 </div>
-                
+
+                {
+                  facilities.map((facility, index) => (
+                    <div key={index} className="mt-2 space-y-3 flex">
+                      <input
+                        id="facility"
+                        onChange={(e) => {
+                          updateFacility(index, e.target.value)
+                        }}
+                        value={facility}
+                        type="text"
+                        className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                        placeholder="Facility"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          removeFacility(index)
+                        }}
+                        className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))
+                }
+
+                <button type='button' className='border-2 p-4' onClick={addFacility}>Add</button>
+
               </div>
               {/* End Section */}
               <div className="mt-5 flex justify-end gap-x-2">
