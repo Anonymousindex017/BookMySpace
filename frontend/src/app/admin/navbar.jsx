@@ -257,17 +257,6 @@ const AdminNavbar = () => {
             Dashboard
           </a>
           </div>
-
-          <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
-          <a
-            className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="/admin/manageuser"
-          >
-           Manage Users
-          </a>
-        </div>
-       
-        
         <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
           <a
             className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
@@ -279,17 +268,25 @@ const AdminNavbar = () => {
         <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
           <a
             className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="/user\profile"
+            href="/admin/manageuser"
           >
-            Users
+           Users
           </a>
         </div>
         <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
           <a
             className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="/admin/profile"
+            href="/admin/managespace"
           >
-            profile
+            Space
+          </a>
+        </div>
+        <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
+          <a
+            className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            href="/admin/manageorder"
+          >
+            Orders
           </a>
         </div>
         <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">

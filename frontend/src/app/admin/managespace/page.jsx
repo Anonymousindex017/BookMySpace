@@ -21,6 +21,27 @@ const managespace = () => {
                 <span className="text-green-500">0.5%</span> change in the last
                 24 hours.
               </p>
+              <a
+                    className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                    href="/admin/addspace"
+                  >
+                    <svg
+                      className="flex-shrink-0 size-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="M12 5v14" />
+                    </svg>
+                    Add Space
+                  </a>
             </div>
             {/* End Header */}
             {/* Table */}
@@ -40,7 +61,7 @@ const managespace = () => {
                     className="px-6 py-3 text-start whitespace-nowrap min-w-64"
                   >
                     <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                      Coin
+                      Name
                     </span>
                   </th>
                   <th

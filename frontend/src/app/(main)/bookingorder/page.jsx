@@ -1,6 +1,45 @@
+'use client';
+import { useFormik } from 'formik';
+import { enqueueSnackbar } from 'notistack';
 import React from 'react'
 
 const bookingorder = () => {
+
+  const bookigForm = useFormik({
+    initialValues: {
+      location: '',
+    duration: '',
+    furniture : '',
+    services : '',
+    coupon : ''
+    },
+    onSubmit: (values) => {
+      
+      console.log(values);
+
+      //sending request to backend
+
+      fetch('http://localhost:5000/booking/add', {
+        method: 'POST',
+        body: JSON.stringify(values), //covert js to json
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((response) => {
+          console.log(response.status);
+          if (response.status === 200) {
+            enqueueSnackbar("Booking Added Successfully", { variant: 'success' })
+          } else {
+            enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+          }
+        }).catch((err) => {
+          console.log(err);
+          enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+        });
+      // validationSchema: signupValidationSchema
+    }
+  })
   return (
     <div>
 

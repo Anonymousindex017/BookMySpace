@@ -18,7 +18,7 @@ const manageOrder = () => {
                   Orders
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Create orders, edit, download and more.
+                  Check order
                 </p>
               </div>
               <div>
@@ -29,27 +29,7 @@ const manageOrder = () => {
                   >
                     View all
                   </a>
-                  <a
-                    className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                    href="#"
-                  >
-                    <svg
-                      className="flex-shrink-0 size-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="M12 5v14" />
-                    </svg>
-                    Create
-                  </a>
+                 
                 </div>
               </div>
             </div>
@@ -260,7 +240,7 @@ const manageOrder = () => {
                       className="block"
                       data-hs-overlay="#hs-ai-invoice-modal"
                     >
-                      <span className="px-6 py-1.5">
+                      <a className="px-6 py-1.5">
                         <span className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                           <svg
                             className="flex-shrink-0 size-4"
@@ -275,7 +255,7 @@ const manageOrder = () => {
                           </svg>
                           View
                         </span>
-                      </span>
+                      </a>
                     </button>
                   </td>
                 </tr>
