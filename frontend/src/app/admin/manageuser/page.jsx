@@ -30,7 +30,7 @@ const ManageUser = () => {
              <input
                type="checkbox"
                className="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-               id="hs-at-with-checkboxes-main"
+               id="checkboxes"
              />
              <span className="sr-only">Checkbox</span>
            </label>
@@ -55,7 +55,7 @@ const ManageUser = () => {
          <th scope="col" className="px-6 py-3 text-start">
            <div className="flex items-center gap-x-2">
              <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-               Status
+               Contact
              </span>
            </div>
          </th>
@@ -87,7 +87,7 @@ const ManageUser = () => {
                <input
                  type="checkbox"
                  className="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                 id="hs-at-with-checkboxes-1"
+                 id="checkboxes"
                />
                <span className="sr-only">Checkbox</span>
              </label>
@@ -124,8 +124,15 @@ const ManageUser = () => {
               {user.email}
              </span>
            </div>
+         </td> 
+         <td className="h-px w-72 whitespace-nowrap">
+           <div className="px-6 py-3">
+             <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+              {user.contact}
+             </span>
+            
+           </div>
          </td>
-      
          <td className="h-px w-72 whitespace-nowrap">
            <div className="px-6 py-3">
              <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
@@ -136,25 +143,8 @@ const ManageUser = () => {
          </td>
          <td className="size-px whitespace-nowrap">
            <div className="px-6 py-3">
-             <div className="flex items-center gap-x-3">
-               <span className="text-xs text-gray-500">1/5</span>
-               <div className="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
-                 <div
-                   className="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-gray-200"
-                   role="progressbar"
-                   style={{ width: "25%" }}
-                   aria-valuenow={25}
-                   aria-valuemin={0}
-                   aria-valuemax={100}
-                 />
-               </div>
-             </div>
-           </div>
-         </td>
-         <td className="size-px whitespace-nowrap">
-           <div className="px-6 py-3">
              <span className="text-sm text-gray-500">
-               28 Dec, 12:12
+               {user.createAt}
              </span>
            </div>
          </td>
@@ -225,7 +215,7 @@ const ManageUser = () => {
                         </a>
                         <a
                           className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                          href="#"
+                          href="/signup"
                         >
                           <svg
                             className="flex-shrink-0 size-4"

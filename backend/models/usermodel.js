@@ -6,7 +6,10 @@ const mySchema = new Schema({
     email : String,
     contact : String,
     role:{type:String, default: 'user'},
-    password: String
+    password: String,
+    createdAt: {
+        type: Date,
+        default: Date.now()}
 });
 
 module.exports= model('user', mySchema);

@@ -16,7 +16,7 @@ const AdminNavbar = () => {
           href="#"
           aria-label="Brand"
         >
-          Brand
+          My Book Work Space
         </a>
       </div>
       <div className="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
@@ -43,38 +43,7 @@ const AdminNavbar = () => {
           </button>
         </div>
         <div className="hidden mx-auto sm:block">
-          <label htmlFor="icon" className="sr-only">
-            Search
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
-              <svg
-                className="flex-shrink-0 size-4 text-gray-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx={11} cy={11} r={8} />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-            </div>
-            <input
-              type="text"
-              id="icon"
-              name="icon"
-              className="py-2 px-4 ps-11 pe-20 block w-92 md:w-96 bg-transparent border-gray-700 shadow-sm rounded-lg text-sm text-gray-300 focus:z-10 focus:border-gray-900 focus:ring-gray-600 placeholder:text-gray-500"
-              placeholder="Search"
-            />
-            <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4">
-              <span className="text-gray-500">Ctrl + /</span>
-            </div>
-          </div>
+          
         </div>
         <div className="flex flex-row items-center justify-end gap-2">
           <button

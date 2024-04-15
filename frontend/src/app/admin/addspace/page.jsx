@@ -9,6 +9,7 @@ const addspace = () => {
 
   const addspaceForm = useFormik({
     initialValues: {
+      title:'',
       category: '',
       location: '',
       city: '',
@@ -79,6 +80,24 @@ const addspace = () => {
             </div>
             <form onSubmit={addspaceForm.handleSubmit}>
               {/* Section */}
+              <div className="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 dark:first:border-transparent">
+                <label
+                  htmlFor="contact"
+                  className="inline-block text-sm font-medium dark:text-white"
+                >
+                  Title
+                </label>
+                <div className="mt-2 space-y-3">
+                <textarea
+                    id="title"
+                    rows={1}
+                    onChange={addspaceForm.handleChange}
+                    value={addspaceForm.values.title}
+                    className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                    placeholder="Title"
+                  ></textarea>
+                </div>
+              </div>
               <div className="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 dark:first:border-transparent">
                 <label
                   htmlFor="contact"
