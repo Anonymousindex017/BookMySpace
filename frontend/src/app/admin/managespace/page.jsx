@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 
 const managespace = () => {
@@ -887,7 +888,6 @@ const managespace = () => {
   </div>
   {/* End Table Section */}
 </>
-
     </div>
   )
 }
