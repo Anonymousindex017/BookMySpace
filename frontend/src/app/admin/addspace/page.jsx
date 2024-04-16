@@ -9,14 +9,13 @@ const addspace = () => {
 
   const addspaceForm = useFormik({
     initialValues: {
-      title:'',
+      title: '',
       category: '',
       location: '',
       city: '',
       state: '',
       area: '',
-      price: '',
-      createAt:''
+      price: ''
     },
     onSubmit: (values) => {
       values.facilities = facilities;
@@ -45,6 +44,29 @@ const addspace = () => {
       // validationSchema: signupValidationSchema
     }
   })
+
+  const uploadImage = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('myfile', file);
+
+    fetch('http://localhost:5000/util/uploadfile', {
+      method: 'POST',
+      body: formData
+    })
+      .then((response) => {
+        console.log(response.status);
+        if (response.status === 200) {
+          enqueueSnackbar("Image Uploaded Successfully", { variant: 'success' })
+          addspaceForm.values.image = file.name;
+        } else {
+          enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+        }
+      }).catch((err) => {
+        console.log(err);
+        enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+      });
+  }
 
   const addFacility = () => {
     setFacilities([...facilities, '']);
@@ -89,7 +111,7 @@ const addspace = () => {
                   Title
                 </label>
                 <div className="mt-2 space-y-3">
-                <textarea
+                  <textarea
                     id="title"
                     rows={1}
                     onChange={addspaceForm.handleChange}
@@ -209,6 +231,8 @@ const addspace = () => {
                     className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     placeholder="price"
                   />
+
+                  <input type='file' onChange={uploadImage} />
                 </div>
 
                 {

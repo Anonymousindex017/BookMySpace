@@ -1,4 +1,5 @@
 'use client';
+import { AppProvider } from '@/context/AppContext';
 import { SnackbarProvider } from 'notistack';
 import React, { useEffect } from 'react';
 
@@ -14,7 +15,9 @@ const Template = ({ children }) => {
     return (
 
         <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: "center" }} autoHideDuration={1000}>
-            {children}
+            <AppProvider>
+                {children}
+            </AppProvider>
         </SnackbarProvider>
     )
 }

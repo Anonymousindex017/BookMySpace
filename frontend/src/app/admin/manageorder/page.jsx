@@ -1,6 +1,24 @@
 import React from 'react'
+'use client';
 
 const manageOrder = () => {
+
+   const [userlist, setUserList] = useState([]);
+  // const [masterList, setMasterList] = useState([]);
+
+  const fetchUserlist = async () => {
+    const res = await fetch("http://localhost:5000/user/getall");
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    setUserList(data);
+    
+  }
+  useEffect(() => {
+    fetchUserlist();
+  }, [])
+
+
   return (
     <div>
         <>

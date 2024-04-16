@@ -54,7 +54,8 @@ router.post('/authenticate',(req,res) =>{
     Model.findOne(req.body)
     .then((result) => {
         if(result){
-            const payload ={_id:result.id, email:result.email, role:result.role};
+            const { _id, firstName, lastName, avatar, role, email } = result;
+            const payload ={_id, email, role, avatar, firstName, lastName};
             //create njwt to 
             jwt.sign (
                 payload, 
@@ -65,7 +66,7 @@ router.post('/authenticate',(req,res) =>{
                         console.log(err);
                         res.status(500).json(err);
                     } else{
-                        res.status(200).json({token:token, avtar:result.avatar});
+                        res.status(200).json({token, avatar, role, firstName, lastName});
                     }
                 }
             )

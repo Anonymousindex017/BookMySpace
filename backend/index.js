@@ -10,6 +10,7 @@ const userRouter = require("./routers/userRouter")
 const spaceRouter = require("./routers/spaceRouter")
 const bookingRouter = require("./routers/bookingRouter")
 const contactusRouter = require("./routers/contactusRouter")
+const utilRouter = require("./routers/utils")
 
 
 
@@ -24,6 +25,9 @@ app.use("/user", userRouter);
 app.use("/space", spaceRouter);
 app.use("/booking", bookingRouter);
 app.use("/contactus", contactusRouter);
+app.use("/util", utilRouter);
+
+app.use(express.static('./static/uploads'));
 
 //start express server
 app.listen(port, () => {

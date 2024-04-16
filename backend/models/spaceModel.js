@@ -1,7 +1,7 @@
 const { model, Schema } = require('../connection');
 
 const mySchema = new Schema({
-    title: '',
+    title: String,
     category: String,
     location: String,
     city: String,
@@ -12,7 +12,7 @@ const mySchema = new Schema({
     price: Number,
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     } 
 });
 

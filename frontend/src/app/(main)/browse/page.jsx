@@ -51,13 +51,13 @@ const Browse = () => {
             spacelist.map((space) => {
               return (
                 <div className="my-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                  <a href="#">
-                    <img className="rounded-t-lg" src="https://img.freepik.com/premium-photo/modern-office-space-with-desktops-with-modern-computers-created-with-generative-ai-technology_185193-110090.jpg" alt="" />
-                  </a>
+                  <Link  href={"/space-details/" + space._id}>
+                    <img className="card-img rounded-t-lg" src={`${process.env.NEXT_PUBLIC_API_URL}/${space.image}`} alt="" />
+                  </Link>
                   <div className='p-4 sm:p-8'>
 
                     <h5 className="mb-4 text-xl font-medium text-white dark:text-white">
-                      Your Order
+                      {space.title}
                     </h5>
                     <div className="flex items-baseline text-gray-900 dark:text-white">
 
