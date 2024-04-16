@@ -19,7 +19,8 @@ const ManageUser = () => {
   }, [])
 
   const displayUser = () => {
-     return    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+     return (
+      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
      <thead className="bg-gray-50 dark:bg-slate-800">
        <tr>
          <th scope="col" className="ps-6 py-3 text-start">
@@ -183,6 +184,7 @@ const ManageUser = () => {
      }
     
    </table>
+     )
   }
 
   return (
