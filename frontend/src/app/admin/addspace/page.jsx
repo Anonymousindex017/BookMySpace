@@ -15,7 +15,8 @@ const addspace = () => {
       city: '',
       state: '',
       area: '',
-      price: ''
+      price: '',
+      createAt:''
     },
     onSubmit: (values) => {
       values.facilities = facilities;
