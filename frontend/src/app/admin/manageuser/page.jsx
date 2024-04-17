@@ -12,7 +12,6 @@ const ManageUser = () => {
     const data = await res.json();
     console.log(data);
     setUserList(data);
-    
   }
   useEffect(() => {
     fetchUserlist();
@@ -70,7 +69,7 @@ const ManageUser = () => {
          <th scope="col" className="px-6 py-3 text-start">
            <div className="flex items-center gap-x-2">
              <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-               Created
+               Create At
              </span>
            </div>
          </th>
@@ -147,16 +146,6 @@ const ManageUser = () => {
              <span className="text-sm text-gray-500">
                {user.createAt}
              </span>
-           </div>
-         </td>
-         <td className="size-px whitespace-nowrap">
-           <div className="px-6 py-1.5">
-             <a
-               className="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-               href="#"
-             >
-               Edit
-             </a>
            </div>
          </td>
          <td className="size-px whitespace-nowrap">

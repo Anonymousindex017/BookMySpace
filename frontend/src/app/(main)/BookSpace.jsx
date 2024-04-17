@@ -5,8 +5,7 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
 const BookSpace = ({spaceData}) => {
-
-
+  console.log(spaceData);
 
   const bookingCardForm = useFormik({
     initialValues: {
@@ -55,17 +54,7 @@ const BookSpace = ({spaceData}) => {
               <div className="max-w-sm mb-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h1 className='text-center'>Fill the details</h1>
 
-                <div className="mt-2 space-y-3">
-                  <select
-                    className="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                    <option selected="">Select Space</option>
-                    {
-                      spaceData.map(space => (
-                        <option value={space._id}>{space.category}</option>
-                      ))
-                    }
-                  </select>
-                </div>
+               
                 <div date-rangepicker="" className="flex items-center">
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
