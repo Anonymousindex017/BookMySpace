@@ -61,16 +61,16 @@ const ThankYou = () => {
 
   return (
     <div>
-      <Container size={'md'}>
+      <div className='md'>
 
-        <Flex justify={'center'} align={'center'} style={{ height: '50vh' }} direction={'column'}>
+        <div className='flex flex-justify-center align-center style-height:50vh direction-column'>
           {
             params.get('redirect_status') === 'succeeded' ?
               <>
                 <IconCircleCheck size={100} color={'green'} />
                 <div style={{ textAlign: 'center', padding: '50px' }}>
-                  <h1 style={{ color: '#4CAF50' }}>Thank You For Your Purchase!</h1>
-                  <p style={{ fontSize: '18px' }}>Your order has been placed successfully.</p>
+                  <h1 className='color-'>Thank You For Your Purchase!</h1>
+                  <p className='style-fontSize:18px'>Your order has been placed successfully.</p>
                   <p style={{ fontSize: '18px' }}>We've sent a confirmation email to your email address.</p>
                 </div>
                 <Button color='blue' mt={20} component={Link} to="/">Go to Home</Button>
@@ -78,14 +78,14 @@ const ThankYou = () => {
               :
               <>
                 <IconCircleX size={100} color={'red'} />
-                <Text size={'xl'}>Payment Failed</Text>
-                <Text size={'lg'}>Your payment was not successful. Please try again.</Text>
-                <Text size={'lg'}>If the problem persists, please contact us.</Text>
-                <Button color='blue' mt={20} component={Link} to="/">Go to Home</Button>
+                <text className='size-xl'>Payment Failed</text>
+                <text className='size-lg' >Your payment was not successful. Please try again.</text>
+                <text className='size-lg'>If the problem persists, please contact us.</text>
+                <Button className='color-blue mt-20 component={Link} to="/"'>Go to Home</Button>
               </>
           }
-        </Flex>
-      </Container>
+        </div>
+      </div>
     </div>
   )
 }

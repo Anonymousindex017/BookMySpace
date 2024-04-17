@@ -29,7 +29,7 @@ const PaymentGateway = () => {
             confirmParams: {
                 return_url: "http://localhost:3000/thankyou",
                 receipt_email: 'sample@mail.com',
-                
+
             },
         });
 
@@ -44,14 +44,14 @@ const PaymentGateway = () => {
     };
 
     return (
-        <Card withBorder p={30} mt={30}>
-            
+        <div className='p-30 mt-30'>
+
             <form onSubmit={handleSubmit}>
                 <Title order={3} my={30} mx="auto">Secure Payment Gateway</Title>
                 <PaymentElement />
                 <Button disabled={!stripe} type="submit" variant='filled' mt={20}>Submit</Button>
             </form>
-        </Card>
+        </div>
     )
 }
 

@@ -17,7 +17,6 @@ const appearance = {
     theme: 'day'
 };
 
-
 const CheckoutSchema = Yup.object().shape({
     name: Yup.string().required('Required'),
     country: Yup.string().required('Required'),
@@ -73,52 +72,49 @@ function CheckoutPage() {
     // console.log(formik.errors);
 
     return (
-        <Container size={'xl'}>
-            <Paper shadow="xl" radius="lg" withBorder p={20}>
-                <Grid>
-                    <Grid.Col span={{ base: 12, md: 6 }}>
-                        <Title order={4}>Product Details</Title>
-                        <Divider my={10} />
-                        <Stack gap={10}>
+        <div className='size-xl'>
+            <div className='shadow-xl radius-lg p-20'>
+                <>
+                    <div className='grid grid-col-2'>
+                        <h3>Product Details</h3>
+                        {
+                            cartItems.map(item => (
+                                <div className='flex align-start justify-space-between'>
+                                    <img src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image[0]}`} alt={item.name} width={50} />
+                                    <div className='box style-{ flexGrow: 1 }'>
+                                        <input className='size-lg font-semibold'>{item.title}</Text>
+                                        <input className='md'>Amount ₹{item.price} x {item.quantity} </input>
+                                    </div>
+                                    <div>
+                                        <input className='size-lg'> ₹{item.price * item.quantity}</input>
+                                    </div>
+                                </div>
+                            ))
+                        }
 
-                            {
-                                cartItems.map(item => (
-                                    <Flex align={'start'} justify={'space-between'} >
-                                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image[0]}`} alt={item.name} width={50} />
-                                        <Box style={{ flexGrow: 1 }}>
-                                            <Text size='lg' fw={'bold'}>{item.title}</Text>
-                                            <Text size='md'>Amount ₹{item.price} x {item.quantity} </Text>
-                                        </Box>
-                                        <Box>
-                                            <Text size='lg'> ₹{item.price * item.quantity}</Text>
-                                        </Box>
-                                    </Flex>
-                                ))
-                            }
-                        </Stack>
 
-                    </Grid.Col>
-                    <Grid.Col span={{ base: 12, md: 6 }}>
-                        <Title order={4}>Delivery Address</Title>
-                        <Divider my={10} />
-                        <Flex gap={5}>
+                    </div>
+                    <div className='grid grid-cols-2'>
+                        <h4>Delivery Address</h4>
+                        <div className='flex flex-gap-5'>
 
-                            <NumberInput
+                            <Input
                                 ref={pincodeRef}
+                                type={Number}
                                 w={'100%'}
                                 label="Pin Code"
                                 maxLength={6}
                                 minLength={6}
                                 variant='filled'
                             />
-                            <TextInput
+                            <Input
                                 ref={contactRef}
                                 w={'100%'}
                                 label="Contact"
                                 maxLength={10}
                                 variant='filled'
                             />
-                        </Flex>
+                        </div>
                         <Textarea
                             ref={addressRef}
                             label="Shipping Address"
@@ -127,9 +123,9 @@ function CheckoutPage() {
                             rows={8}
                         />
 
-                    </Grid.Col>
-                </Grid>
-            </Paper>
+                    </div>
+                </>
+            </div>
             <Button mt={30} onClick={getPaymentIntent}>Pay Now</Button>
             {
                 clientSecret && (
@@ -141,7 +137,7 @@ function CheckoutPage() {
                     </Elements>
                 )
             }
-        </Container>
+        </div>
     );
 }
 
