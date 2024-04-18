@@ -74,7 +74,7 @@ const spaceDetails = () => {
                           <div>
                             <h6 className="mb-2 font-semibold leading-5">Location</h6>
                             <p className="mb-3 text-sm text-gray-900">
-                              .
+
                             </p>
                             <ul className="mb-4 -ml-1 space-y-2">
                               <li className="flex items-start">
@@ -93,7 +93,7 @@ const spaceDetails = () => {
                                     />
                                   </svg>
                                 </span>
-                                B-1
+                                {spaceData.location}
                               </li>
                               <li className="flex items-start">
                                 <span className="mr-1">
@@ -111,7 +111,7 @@ const spaceDetails = () => {
                                     />
                                   </svg>
                                 </span>
-                                Lucknow
+                                {spaceData.city}
                               </li>
                               <li className="flex items-start">
                                 <span className="mr-1">
@@ -129,7 +129,7 @@ const spaceDetails = () => {
                                     />
                                   </svg>
                                 </span>
-                                U.P.
+                                {spaceData.state}
                               </li>
                             </ul>
                             <a
@@ -170,9 +170,16 @@ const spaceDetails = () => {
                                     />
                                   </svg>
                                 </span>
-                                Transport
+                                <div className=' flex font-bold '>
+
+                                  {spaceData.facilities.map((facility, index) => (
+                                    <p key={index}>{facility}</p>
+                                  ))}
+                               
+                                </div>
+
                               </li>
-                              <li className="flex items-start">
+                              {/* <li className="flex items-start">
                                 <span className="mr-1">
                                   <svg
                                     className="w-5 h-5 mt-px text-deep-purple-accent-400"
@@ -207,7 +214,7 @@ const spaceDetails = () => {
                                   </svg>
                                 </span>
                                 Parking
-                              </li>
+                              </li> */}
                             </ul>
                             <a
                               href="/"

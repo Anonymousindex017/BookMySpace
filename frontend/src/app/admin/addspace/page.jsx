@@ -1,9 +1,13 @@
 'use client';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
+
 import { enqueueSnackbar } from 'notistack';
 import React, { useState } from 'react';
 
 const addspace = () => {
+
+  const router = useRouter();
 
   const [facilities, setFacilities] = useState([]);
 
@@ -34,6 +38,7 @@ const addspace = () => {
           console.log(response.status);
           if (response.status === 200) {
             enqueueSnackbar("User Added Successfully", { variant: 'success' })
+            router.push("/admin/managespace")
           } else {
             enqueueSnackbar("Somthing went wrong", { variant: 'error' })
           }
