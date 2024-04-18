@@ -57,7 +57,7 @@ const Contactus = () => {
           <div className="mt-12 max-w-lg mx-auto">
             {/* Card */}
             <div className="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-gray-700">
-              <h2 className="mb-8 text-xl font-semibold text-gray-800 dark:text-gray-200">
+              <h2 className="mb-8 text-xl mx-auto font-semibold text-gray-800 dark:text-gray-200">
                 Fill in the form
               </h2>
               <form onSubmit={contactusForm.handleSubmit}>

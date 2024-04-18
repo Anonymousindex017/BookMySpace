@@ -21,7 +21,7 @@ app.use(cors({
 }));
 
 //that is port to start express server
-app.use("/user", userRouter);
+app.use("/user", userRouter); 
 app.use("/space", spaceRouter);
 app.use("/booking", bookingRouter);
 app.use("/contactus", contactusRouter);
