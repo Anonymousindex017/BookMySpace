@@ -44,6 +44,9 @@ const login = () => {
                 setCurrentUser(data);
                 setLoggedIn(true);
                 router.push('/browse');
+                if (data.role === 'admin') {
+                  router.push('/admin/addspace');
+                }
               })
           } else if (response.status === 401) {
             toast.error('Invalid Credentials');
