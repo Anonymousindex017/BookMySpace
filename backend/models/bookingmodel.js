@@ -10,7 +10,7 @@ const mySchema = new Schema({
     paymentDetails: Object,
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
 });
 

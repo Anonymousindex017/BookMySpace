@@ -12,7 +12,7 @@ import useAppContext from '@/context/AppContext';
 import { useParams } from 'next/navigation';
 
 const appearance = {
-    theme: 'day'
+    theme: 'night'
 };
 
 const CheckoutSchema = Yup.object().shape({
@@ -85,14 +85,14 @@ function CheckoutPage() {
     // console.log(formik.errors);
 
     return (
-        <div className='size-xl'>
+        <div className='size-xl md'>
             <div className='shadow-xl radius-lg p-20'>
                 <>
                     <div className='grid grid-col-2'>
                         <h3>Space Details</h3>
                         {
                             spaceDetails !== null && (
-                                <div className='grid grid-cols-12 gap-5'>
+                                <div className=''>
                                     <div className='col-span-4'>
                                         <img src={`${process.env.NEXT_PUBLIC_API_URL}/${spaceDetails.image}`} alt="" />
                                     </div>
@@ -104,9 +104,8 @@ function CheckoutPage() {
                         }
                     </div>
                     <div className='grid grid-cols-2'>
-                        <h4>Delivery Address</h4>
+                        <h4>Your Address</h4>
                         <div className='flex flex-gap-5'>
-
                             <input
                                 ref={pincodeRef}
                                 placeholder='Pin Code'
@@ -130,23 +129,23 @@ function CheckoutPage() {
                             label="User Address"
                             variant='filled'
                             w={'100%'}
-                            rows={8}
+                            
                         ></textarea>
 
                     </div>
-                </>
-            </div>
-            <button mt={30} onClick={getPaymentIntent}>Pay Now</button>
+            <button className='' onClick={getPaymentIntent}>Pay Now</button>
             {
                 clientSecret && (
                     <Elements stripe={stripePromise} options={{
                         clientSecret,
                         appearance
                     }}>
-                        <PaymentGateway />
+                        <PaymentGateway spaceid={id} />
                     </Elements>
                 )
             }
+                </>
+            </div>
         </div>
     );
 }

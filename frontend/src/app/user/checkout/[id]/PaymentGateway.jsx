@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ElementsConsumer, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
-const PaymentGateway = () => {
+const PaymentGateway = ({ spaceid }) => {
 
     const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
 
@@ -12,8 +12,6 @@ const PaymentGateway = () => {
         // We don't want to let default form submission happen here,
         // which would refresh the page.
         event.preventDefault();
-
-
 
         if (!stripe || !elements) {
             console.log('stripe not loaded');
@@ -26,7 +24,7 @@ const PaymentGateway = () => {
             //`Elements` instance that was used to create the Payment Element
             elements,
             confirmParams: {
-                return_url: "http://localhost:3000/thankyou",
+                return_url: "http://localhost:3000/thankyou/" + spaceid,
                 receipt_email: 'sample@mail.com',
 
             },
