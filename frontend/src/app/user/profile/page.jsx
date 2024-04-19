@@ -1,20 +1,52 @@
 'use client';
 import { useFormik } from 'formik';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const UserProfile = () => {
  const [currentUser, setCurrentUser ] = useState
 (JSON.parse(sessionStorage.getItem('user'))
 ); 
 
+const [user, setUser] = useState({});
 
 const userForm = useFormik({
-  initialValues: currentUser,
+  initialValues: currentUser, 
   onSubmit:async (data) => {
     console.log(data);
-    const res = await fetch('http://localhost:5000/user/update', )
-  } 
+    const res = await fetch('http://localhost:5000/user/update' + currentUser._id, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(res.status);
+    const userdata = await res.json().result;
+    console.log(userdata);
+    setCurrentUser(userdata);
+    sessionStorage.setItem('user', JSON.stringify(userdata));
+  }, 
 })
+
+const fetchProfileData = () => {
+  fetch('http://localhost:5000/user/getbyid', {
+    headers: {
+      'x-auth-token': currentUser.token
+    }
+  })
+  .then((result) => {
+    console.log(result.status);
+    setUser(data)
+  }).catch((err) => {
+    log(err);
+  });
+}
+
+useEffect (() => {
+  fetchProfileData();
+
+})
+
 return (
   <div>
     <div>
@@ -108,15 +140,19 @@ return (
                 {/* End Col */}
                 <div className="sm:col-span-9">
                   <div className="sm:flex">
-                    <p>{currentUser.firstName}</p>
-                   {/* { <input
-                      id="af-account-full-name"
+                    <input
+                      id="firstName"
                       type="text"
+                      onChange={userForm.handleChange}
+                      value={userForm.values.firstName}
                       className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       placeholder="First Name"
-                    />} */}
+                    />
                     <input
                       type="text"
+                      id="lastName"
+                      onChange={userForm.handleChange}
+                      value={userForm.values.lastName}
                       className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       placeholder="Last Name"
                     />
@@ -134,8 +170,10 @@ return (
                 {/* End Col */}
                 <div className="sm:col-span-9">
                   <input
-                    id="af-account-email"
+                    id="email"
                     type="email"
+                    onChange={userForm.handleChange}
+                    value={userForm.values.email}
                     className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     placeholder="abc@gmail.com"
                   />
@@ -143,7 +181,7 @@ return (
                 {/* End Col */}
                 <div className="sm:col-span-3">
                   <label
-                    htmlFor="af-account-password"
+                    htmlFor="password"
                     className="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200"
                   >
                     Password
@@ -153,8 +191,10 @@ return (
                 <div className="sm:col-span-9">
                   <div className="space-y-2">
                     <input
-                      id="af-account-password"
+                      id="password"
                       type="text"
+                      onChange={userForm.handleChange}
+                      value={userForm.values.password}
                       className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       placeholder="Enter current password"
                     />
@@ -185,6 +225,8 @@ return (
                     <input
                       id="af-account-phone"
                       type="text"
+                      onChange={userForm.handleChange}
+                      value={userForm.values.contact}
                       className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       placeholder="+x(xxx)xxx-xx-xx"
                     />

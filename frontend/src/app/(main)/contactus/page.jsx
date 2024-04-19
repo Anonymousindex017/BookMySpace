@@ -7,8 +7,7 @@ import { enqueueSnackbar } from 'notistack';
 const Contactus = () => {
   const contactusForm = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      fullName: '',
       email: '',
       phoneNumber: '',
       details: ''
@@ -40,137 +39,271 @@ const Contactus = () => {
     }
   })
   return (
-    <div>
-      <>
-        {/* Contact Us */}
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-          <div className="max-w-xl mx-auto">
-            <div className="text-center">
-              <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
-                Contact us
-              </h1>
-              <p className="mt-1 text-gray-600 dark:text-gray-400">
-                We'd love to talk about how we can help you.
-              </p>
-            </div>
+    <>
+      {/* Contact */}
+      <div className="bg-neutral-900">
+        <div className="max-w-5xl px-4 xl:px-0 py-10 lg:py-20 mx-auto">
+          {/* Title */}
+          <div className="max-w-3xl mb-10 lg:mb-14">
+            <h2 className="text-white font-semibold text-2xl md:text-4xl md:leading-tight">
+              Contact us
+            </h2>
+            <p className="mt-1 text-neutral-400">
+              How Can I Help You?
+            </p>
           </div>
-          <div className="mt-12 max-w-lg mx-auto">
-            {/* Card */}
-            <div className="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-gray-700">
-              <h2 className="mb-8 text-xl mx-auto font-semibold text-gray-800 dark:text-gray-200">
-                Fill in the form
-              </h2>
+          {/* End Title */}
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16">
+            <div className="md:order-2 border-b border-neutral-800 pb-10 mb-10 md:border-b-0 md:pb-0 md:mb-0">
               <form onSubmit={contactusForm.handleSubmit}>
-                <div className="grid gap-4 lg:gap-6">
-                  {/* Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
-                    <div>
-                      <label
-                        htmlFor="firstname"
-                        className="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
-                      >
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        id="firstname"
-                        onChange={contactusForm.handleChange}
-                        value={contactusForm.values.firstName}
-                        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="lastname"
-                        className="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
-                      >
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        id="lastname"
-                        onChange={contactusForm.handleChange}
-                        value={contactusForm.values.lastName}
-                        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      />
-                    </div>
-                  </div>
-                  {/* End Grid */}
-                  {/* Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        onChange={contactusForm.handleChange}
-                        value={contactusForm.values.email}
-                        autoComplete="email"
-                        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="phoneNumber"
-                        className="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        type="text"
-                        id="phoneNumber"
-                        onChange={contactusForm.handleChange}
-                        value={contactusForm.values.phoneNumber}
-                        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      />
-                    </div>
-                  </div>
-                  {/* End Grid */}
-                  <div>
+                <div className="space-y-4">
+                  {/* Input */}
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="fullName"
+                      onChange={contactusForm.handleChange}
+                      value={contactusForm.values.fullName}
+                      className="peer p-4 block w-full bg-neutral-800 border-transparent rounded-lg text-sm text-white placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-transparent disabled:opacity-50 disabled:pointer-events-none
+          focus:pt-6
+          focus:pb-2
+          [&:not(:placeholder-shown)]:pt-6
+          [&:not(:placeholder-shown)]:pb-2
+          autofill:pt-6
+          autofill:pb-2"
+                      placeholder="Name"
+                    />
                     <label
-                      htmlFor="about"
-                      className="block mb-2 text-sm text-gray-700 font-medium dark:text-white"
+                      htmlFor="name"
+                      className="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
+            peer-focus:text-xs
+            peer-focus:-translate-y-1.5
+            peer-focus:text-neutral-400
+            peer-[:not(:placeholder-shown)]:text-xs
+            peer-[:not(:placeholder-shown)]:-translate-y-1.5
+            peer-[:not(:placeholder-shown)]:text-neutral-400"
                     >
-                      Details
+                      Name
                     </label>
+                  </div>
+                  {/* End Input */}
+                  {/* Input */}
+                  <div className="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      onChange={contactusForm.handleChange}
+                      value={contactusForm.values.email}
+                      className="peer p-4 block w-full bg-neutral-800 border-transparent rounded-lg text-sm text-white placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-transparent disabled:opacity-50 disabled:pointer-events-none
+          focus:pt-6
+          focus:pb-2
+          [&:not(:placeholder-shown)]:pt-6
+          [&:not(:placeholder-shown)]:pb-2
+          autofill:pt-6
+          autofill:pb-2"
+                      placeholder="Email"
+                    />
+                    <label
+                      htmlFor="hs-tac-input-email"
+                      className="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
+            peer-focus:text-xs
+            peer-focus:-translate-y-1.5
+            peer-focus:text-neutral-400
+            peer-[:not(:placeholder-shown)]:text-xs
+            peer-[:not(:placeholder-shown)]:-translate-y-1.5
+            peer-[:not(:placeholder-shown)]:text-neutral-400"
+                    >
+                      Email
+                    </label>
+                  </div>
+                  {/* End Input */}
+                  {/* Input */}
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      onChange={contactusForm.handleChange}
+                      value={contactusForm.values.phoneNumber}
+                      className="peer p-4 block w-full bg-neutral-800 border-transparent rounded-lg text-sm text-white placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-transparent disabled:opacity-50 disabled:pointer-events-none
+          focus:pt-6
+          focus:pb-2
+          [&:not(:placeholder-shown)]:pt-6
+          [&:not(:placeholder-shown)]:pb-2
+          autofill:pt-6
+          autofill:pb-2"
+                      placeholder="Phone"
+                    />
+                    <label
+                      htmlFor="hs-tac-input-phone"
+                      className="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
+            peer-focus:text-xs
+            peer-focus:-translate-y-1.5
+            peer-focus:text-neutral-400
+            peer-[:not(:placeholder-shown)]:text-xs
+            peer-[:not(:placeholder-shown)]:-translate-y-1.5
+            peer-[:not(:placeholder-shown)]:text-neutral-400"
+                    >
+                      Phone
+                    </label>
+                  </div>
+                  {/* End Input */}
+                  {/* Textarea */}
+                  <div className="relative">
                     <textarea
                       id="details"
-                      rows={4}
                       onChange={contactusForm.handleChange}
                       value={contactusForm.values.details}
-                      className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                      className="peer p-4 block w-full bg-neutral-800 border-transparent rounded-lg text-sm text-white placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-transparent disabled:opacity-50 disabled:pointer-events-none
+          focus:pt-6
+          focus:pb-2
+          [&:not(:placeholder-shown)]:pt-6
+          [&:not(:placeholder-shown)]:pb-2
+          autofill:pt-6
+          autofill:pb-2"
+                      placeholder="This is a textarea placeholder"
                       defaultValue={""}
                     />
+                    <label
+                      htmlFor="hs-tac-message"
+                      className="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
+            peer-focus:text-xs
+            peer-focus:-translate-y-1.5
+            peer-focus:text-neutral-400
+            peer-[:not(:placeholder-shown)]:text-xs
+            peer-[:not(:placeholder-shown)]:-translate-y-1.5
+            peer-[:not(:placeholder-shown)]:text-neutral-400"
+                    >
+                     Ask Your Query
+                    </label>
                   </div>
+                  {/* End Textarea */}
                 </div>
-                {/* End Grid */}
-                <div className="mt-6 grid">
-                  <button
-                    type="submit"
-                    className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                  >
-                    Send inquiry
-                  </button>
-                </div>
-                <div className="mt-3 text-center">
-                  <p className="text-sm text-gray-500">
-                    We'll get back to you in 1-2 business days.
+                <div className="mt-2">
+                  <p className="text-xs text-neutral-500">
+                    All fields are required
+                  </p>
+                  <p className="mt-5">
+                    <a
+                      className="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none"
+                      href="#"
+                    >
+                      Submit
+                      <svg
+                        className="flex-shrink-0 size-4 transition group-hover:translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0.5 group-focus:translate-x-0"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </a>
                   </p>
                 </div>
               </form>
             </div>
-            {/* End Card */}
+            {/* End Col */}
+            <div className="space-y-14">
+              {/* Item */}
+              <div className="flex gap-x-5">
+                <svg
+                  className="flex-shrink-0 size-6 text-neutral-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx={12} cy={10} r={3} />
+                </svg>
+                <div className="grow">
+                  <h4 className="text-white font-semibold">Our address:</h4>
+                  <address className="mt-1 text-neutral-400 text-sm not-italic">
+                    B-1 Transport Nagar Lucknow
+                    <br />
+                    Uttar Pradesh, 226012
+                  </address>
+                </div>
+              </div>
+              {/* End Item */}
+              {/* Item */}
+              <div className="flex gap-x-5">
+                <svg
+                  className="flex-shrink-0 size-6 text-neutral-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z" />
+                  <path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10" />
+                </svg>
+                <div className="grow">
+                  <h4 className="text-white font-semibold">Email us:</h4>
+                  <a
+                    className="mt-1 text-neutral-400 text-sm"
+                    href="mailto:"
+                    target="_blank"
+                  >
+                    bookmyworkspace@gmail.com
+                  </a>
+                </div>
+              </div>
+              {/* End Item */}
+              {/* Item */}
+              <div className="flex gap-x-5">
+                <svg
+                  className="flex-shrink-0 size-6 text-neutral-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m3 11 18-5v12L3 14v-3z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+                <div className="grow">
+                  <h4 className="text-white font-semibold">Phone Number</h4>
+                  <p className="mt-1 text-neutral-400">
+                   +919336432417
+                   <br />
+                    +918604000000
+                  </p>
+                 
+                </div>
+              </div>
+              {/* End Item */}
+            </div>
+            {/* End Col */}
           </div>
+          {/* End Grid */}
         </div>
-        {/* End Contact Us */}
-      </>
+      </div>
+      {/* End Contact */}
+    </>
 
-    </div>
   )
 }
 

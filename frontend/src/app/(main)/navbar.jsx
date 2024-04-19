@@ -1,7 +1,17 @@
+"use client";
 import React from 'react'
+// import { useLocation } from 'next/navigation';
 
 const Navbar = () => {
-  return (
+
+  // const location = useLocation();
+
+  // const hideNavbarPaths = ['/login',]
+
+  // const shouldHideNavbar = hideNavbarPaths.includes(location.pathname)
+
+  // return shouldHideNavbar ? null : (
+    return (
     <div>
       <>
         {/* ========== HEADER ========== */}
