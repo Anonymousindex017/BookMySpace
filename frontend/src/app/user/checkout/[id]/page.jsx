@@ -1,8 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { Paper, Text, TextInput, Button, Group, SimpleGrid, Container, Box, Flex, Loader, NumberInput, Title, Grid, Divider, Stack, Textarea } from '@mantine/core';
-// import bg from './bg.svg';
-import classes from './Checkoutpage.module.css';
+// import classes from './Checkoutpage.module.css';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { enqueueSnackbar } from 'notistack';
@@ -10,8 +8,8 @@ import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import PaymentGateway from './PaymentGateway';
 import { Elements } from '@stripe/react-stripe-js';
-import useCartContext from '@/context/CartContext';
 import useAppContext from '@/context/AppContext';
+import { useParams } from 'next/navigation';
 
 const appearance = {
     theme: 'day'
@@ -30,13 +28,12 @@ const CheckoutSchema = Yup.object().shape({
 
 function CheckoutPage() {
 
-    const [selFile, setSelFile] = useState('');
+    const { id } = useParams();
     const hasRun = useRef(false);
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
     // console.log(stripePromise);
     const [clientSecret, setClientSecret] = useState('');
-    const [tutorDetails, setTutorDetails] = useState(null);
-    const { getCartTotalAmount, cartItems } = useCartContext();
+    const [spaceDetails, setSpaceDetails] = useState(null);
     const { currentUser } = useAppContext();
 
     const addressRef = useRef();
@@ -45,7 +42,7 @@ function CheckoutPage() {
 
     const getPaymentIntent = async () => {
         const shipping = {
-            name: currentUser.name,
+            name: currentUser.firstName + ' ' + currentUser.lastName,
             address: {
                 line1: addressRef.current.value,
                 postal_code: pincodeRef.current.value,
@@ -53,14 +50,13 @@ function CheckoutPage() {
             },
         }
         sessionStorage.setItem('shipping', JSON.stringify(shipping));
-        console.log(getCartTotalAmount());
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                amount: getCartTotalAmount(),
+                amount: spaceDetails.price,
                 customerData: shipping
             })
         });
@@ -69,6 +65,23 @@ function CheckoutPage() {
         setClientSecret(data.clientSecret);
     }
 
+    const fetchSpaceData = () => {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/space/getbyid/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setSpaceDetails(data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    useEffect(() => {
+        fetchSpaceData();
+    }, [])
+
+
     // console.log(formik.errors);
 
     return (
@@ -76,57 +89,54 @@ function CheckoutPage() {
             <div className='shadow-xl radius-lg p-20'>
                 <>
                     <div className='grid grid-col-2'>
-                        <h3>Product Details</h3>
+                        <h3>Space Details</h3>
                         {
-                            cartItems.map(item => (
-                                <div className='flex align-start justify-space-between'>
-                                    <img src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image[0]}`} alt={item.name} width={50} />
-                                    <div className='box style-{ flexGrow: 1 }'>
-                                        <input className='size-lg font-semibold'>{item.title}</Text>
-                                        <input className='md'>Amount ₹{item.price} x {item.quantity} </input>
+                            spaceDetails !== null && (
+                                <div className='grid grid-cols-12 gap-5'>
+                                    <div className='col-span-4'>
+                                        <img src={`${process.env.NEXT_PUBLIC_API_URL}/${spaceDetails.image}`} alt="" />
                                     </div>
-                                    <div>
-                                        <input className='size-lg'> ₹{item.price * item.quantity}</input>
+                                    <div className='col-span-8'>
+                                        <h3 className='text-2xl'>{spaceDetails.title}</h3>
                                     </div>
                                 </div>
-                            ))
+                            )
                         }
-
-
                     </div>
                     <div className='grid grid-cols-2'>
                         <h4>Delivery Address</h4>
                         <div className='flex flex-gap-5'>
 
-                            <Input
+                            <input
                                 ref={pincodeRef}
+                                placeholder='Pin Code'
                                 type={Number}
                                 w={'100%'}
-                                label="Pin Code"
                                 maxLength={6}
                                 minLength={6}
                                 variant='filled'
                             />
-                            <Input
+                            <input
                                 ref={contactRef}
+                                placeholder='Contact'
                                 w={'100%'}
                                 label="Contact"
                                 maxLength={10}
                                 variant='filled'
                             />
                         </div>
-                        <Textarea
+                        <textarea
                             ref={addressRef}
-                            label="Shipping Address"
+                            label="User Address"
                             variant='filled'
                             w={'100%'}
                             rows={8}
-                        />
+                        ></textarea>
 
                     </div>
                 </>
             </div>
-            <Button mt={30} onClick={getPaymentIntent}>Pay Now</Button>
+            <button mt={30} onClick={getPaymentIntent}>Pay Now</button>
             {
                 clientSecret && (
                     <Elements stripe={stripePromise} options={{

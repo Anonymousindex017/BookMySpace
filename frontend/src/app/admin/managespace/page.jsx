@@ -195,11 +195,6 @@ const managespace = () => {
                     <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                       Space List
                     </h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      The global cryptocurrency market cap today is $1.09 Trillion, a{" "}
-                      <span className="text-green-500">0.5%</span> change in the last
-                      24 hours.
-                    </p>
                     <a
                       className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                       href="/admin/addspace"
@@ -223,9 +218,6 @@ const managespace = () => {
                     </a>
                   </div>
                   {/* End Header */}
-                  {/* Table */}
-
-                  {/* End Table */}
                 </div>
               </div>
             </div>

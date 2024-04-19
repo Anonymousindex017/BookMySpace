@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ElementsConsumer, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { Button, Card, Title } from '@mantine/core';
 
 const PaymentGateway = () => {
 
@@ -47,9 +46,9 @@ const PaymentGateway = () => {
         <div className='p-30 mt-30'>
 
             <form onSubmit={handleSubmit}>
-                <Title order={3} my={30} mx="auto">Secure Payment Gateway</Title>
+                <h3 >Secure Payment Gateway</h3>
                 <PaymentElement />
-                <Button disabled={!stripe} type="submit" variant='filled' mt={20}>Submit</Button>
+                <button disabled={!stripe} type="submit" variant='filled' mt={20}>Submit</button>
             </form>
         </div>
     )

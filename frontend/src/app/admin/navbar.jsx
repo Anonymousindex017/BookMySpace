@@ -66,7 +66,8 @@ const AdminNavbar = () => {
               <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
             </svg>
           </button>
-          <button
+          <a
+          href='/login'
             type="button"
             className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full text-white hover:bg-white/20 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600"
             data-hs-offcanvas="#hs-offcanvas-right"
@@ -85,32 +86,33 @@ const AdminNavbar = () => {
             >
               <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
             </svg>
-          </button>
+          </a>
           <div
             className="hs-dropdown relative inline-flex"
             data-hs-dropdown-placement="bottom-right"
           >
-            <button
+            <a
+            href='/admin/profile'
               id="hs-dropdown-with-header"
               type="button"
               className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full text-white hover:bg-white/20 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600"
             >
               <img
                 className="inline-block size-[38px] rounded-full"
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                src="https://m.media-amazon.com/images/M/MV5BYTAyZjBmN2MtYmJjZi00NDk1LWJhMGYtOWEzYTk5NGM5ZmRlXkEyXkFqcGdeQXVyMTAzNTI3NjUw._V1_.jpg"
                 alt="Image Description"
               />
-            </button>
+            </a>
             <div
               className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 z-10 bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700"
               aria-labelledby="hs-dropdown-with-header"
             >
               <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Signed in as
+                  
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
-                  james@site.com
+                 
                 </p>
               </div>
               <div className="mt-2 py-2 first:pt-0 last:pb-0">
@@ -261,7 +263,7 @@ const AdminNavbar = () => {
         <div className="snap-center shrink-0 pe-5 sm:pe-8 sm:last:pe-0">
           <a
             className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="#"
+            href="manageenquiry"
           >
             Enquiry Request
           </a>

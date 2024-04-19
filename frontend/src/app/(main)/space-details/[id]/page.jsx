@@ -4,6 +4,7 @@ import { Chicle } from 'next/font/google';
 import { useParams } from 'next/navigation';
 import React, { Fragment, useEffect, useState } from 'react'
 import BookSpace from '../../BookSpace';
+import Link from 'next/link';
 
 const spaceDetails = () => {
 
@@ -304,13 +305,13 @@ const spaceDetails = () => {
 
                         </div>
                       </div>
-                      <button
-                        type="button"
+                      <Link
+                        href={"/user/checkout/"+spaceData._id}
                         className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                        onClick={e => setIsOpen(true)}
+                        // onClick={e => setIsOpen(true)}
                       >
                         Book Now Space
-                      </button>
+                      </Link>
                     </div>
 
                   </div>

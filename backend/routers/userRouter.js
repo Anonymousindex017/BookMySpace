@@ -63,6 +63,7 @@ router.put('/update/:id', (req, res) => {
 })
 
 router.post('/authenticate', (req, res) => {
+    console.log(req.body);
     Model.findOne(req.body)
         .then((result) => {
             if (result) {
@@ -72,7 +73,7 @@ router.post('/authenticate', (req, res) => {
                 jwt.sign(
                     payload,
                     process.env.JWT_SECRET,
-                    { expiresIn: '300 days' },
+                    { expiresIn: '300 days'},
                     (err, token) => {
                         if (err) {
                             console.log(err);
