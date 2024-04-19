@@ -62,9 +62,9 @@ const Browse = () => {
                     <div className="flex items-baseline text-gray-900 dark:text-white">
 
                       <span className="text-3xl font-semibold">Rs</span>
-                      <span className="text-5xl font-extrabold tracking-tight">1000</span>
+                      <span className="text-5xl font-extrabold tracking-tight">{space.price}</span>
                       <span className="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">
-                        / 8 hour
+                        / day
                       </span>
                     </div>
                     <Disclosure>

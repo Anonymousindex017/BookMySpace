@@ -16,7 +16,7 @@ const AdminNavbar = () => {
           href="#"
           aria-label="Brand"
         >
-          My Book Work Space
+          Book My Work Space
         </a>
       </div>
       <div className="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
