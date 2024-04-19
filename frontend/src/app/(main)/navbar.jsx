@@ -73,6 +73,12 @@ const Navbar = () => {
                 </a>
                 <a
                   className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                  href="/user/profile"
+                >
+                 My Profile
+                </a>
+                <a
+                  className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                   href="/about"
                 >
                   About
@@ -81,7 +87,7 @@ const Navbar = () => {
                   className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                   href="/contactus"
                 >
-                  contactus
+                  Contact Us
                 </a>
                 <div className="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
                   <button

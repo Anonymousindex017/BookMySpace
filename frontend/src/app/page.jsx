@@ -24,8 +24,10 @@ const Home = () => {
               Book My Work Space
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
-              We provide you with a test account that can be set up in seconds.
-              Our main focus is getting responses to you as soon as we can.
+            Comfortable office furniture offering suitable environment for corporate interaction.
+            Each space is designed in such a way to suit all your needs.
+            You’re always welcome to visit and survey the options available.
+            The basic facilities will be given according to your need and choice of site location.
             </p>
           </div>
           {/* End Title */}
@@ -47,7 +49,7 @@ const Home = () => {
             </svg>
             <div className="relative z-10">
               <p className="text-xl italic text-gray-800 dark:text-white">
-              Flexispaces offers Corporate Business Meeting rooms, Training rooms and Conference rooms in India. Affordable meeting rooms on rent available at great location.
+              Book My Work Space offers Corporate Business Meeting rooms, Training rooms and Conference rooms in India. Affordable meeting rooms on rent available at great location.
               </p>
             </div>
             <footer className="mt-3">
@@ -95,7 +97,7 @@ const Home = () => {
                     >
                       Login
                     </Link>
-                  <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ms-6 dark:text-gray-500 dark:before:border-gray-700 dark:after:border-gray-700">
+                  <div className="py-10 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ms-6 dark:text-gray-500 dark:before:border-gray-700 dark:after:border-gray-700">
                     Or
                   </div>
                     <div className="mt-5">            
