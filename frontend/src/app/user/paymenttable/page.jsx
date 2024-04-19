@@ -1,92 +1,43 @@
-import React from 'react'
-
+'use client';
+import React, { useEffect, useState } from 'react'
 const paymentTable = () => {
-  return (
-    <div>
-<>
-  {/* Table Section */}
-  <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-    {/* Card */}
-    <div className="flex flex-col">
-      <div className="-m-1.5 overflow-x-auto">
-        <div className="p-1.5 min-w-full inline-block align-middle">
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
-            {/* Header */}
-            <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
-              <div>
-                <h2 className="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-                  Payments
-                </h2>
-                <p className="text-sm text-gray-600 dark:text-neutral-400">
-                  view all payments
-                </p>
-              </div>
-            
-            </div>
-            {/* End Header */}
-            {/* Accordion */}
-            <div className="border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-900 dark:border-neutral-700">
-              <button
-                type="button"
-                className="hs-collapse-toggle py-4 px-6 w-full flex items-center gap-2 font-semibold text-gray-800 dark:text-neutral-200"
-                id="hs-basic-collapse"
-                data-hs-collapse="#hs-as-table-collapse"
-              >
-                <svg
-                  className="hs-collapse-open:rotate-90 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-                Insights
-              </button>
-              <div
-                id="hs-as-table-collapse"
-                className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
-                aria-labelledby="hs-basic-collapse"
-              >
-                <div className="pb-4 px-6">
-                  <div className="flex items-center space-x-2">
-                    <span className="size-5 flex justify-center items-center rounded-full bg-blue-600 text-white dark:bg-blue-500">
-                      <svg
-                        className="flex-shrink-0 size-3.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width={24}
-                        height={24}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                    </span>
-                    <span className="text-sm text-gray-800 dark:text-neutral-400">
-                      There are no insights for this period.
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* End Accordion */}
-            {/* Table */}
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+    const [Paymentlist, setPaymentList] = useState([]);
+  const fetchPaymentlist = async () => {
+    const res = await fetch("http://localhost:5000/booking/getall");
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    setPaymentList(data);
+  }
+  useEffect(() => {
+    fetchPaymentlist();
+  }, [])
+
+
+   const deleteUser = async(id) => {
+    const res = await fetch("http://localhost:5000/booking/delete/" +id, {
+      method:"DELETE",
+      
+    }).then((res) => {
+      if(res.status === 200){
+        enqueueSnackbar("user deleted successfully", {variant:"success"})
+        fetchPaymentlist();
+      }else{
+        enqueueSnackbar("somthing went worng",{variant:"warning"})
+      }
+    })
+   }
+
+
+const displayPayment = () => {
+    return(
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
               <thead className="bg-gray-50 dark:bg-neutral-900">
                 <tr>
                   <th scope="col" className="px-6 py-3 text-start">
                     <div className="flex items-center gap-x-2">
                       <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Invoice number
+                        Payment ID 
                       </span>
                       <div className="hs-tooltip">
                         <div className="hs-tooltip-toggle">
@@ -147,7 +98,9 @@ const paymentTable = () => {
                   <th scope="col" className="px-6 py-3 text-end" />
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+              {
+                Paymentlist.map((user)=> {
+                    <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
                 <tr className="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                   <td className="size-px whitespace-nowrap">
                     <button
@@ -157,7 +110,7 @@ const paymentTable = () => {
                     >
                       <span className="block px-6 py-2">
                         <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                          #ADUQ2189H1-0038
+                          {booking._id}
                         </span>
                       </span>
                     </button>
@@ -170,7 +123,7 @@ const paymentTable = () => {
                     >
                       <span className="block px-6 py-2">
                         <span className="text-sm text-gray-600 dark:text-neutral-400">
-                          US $400.00
+                            {booking.amount}
                         </span>
                       </span>
                     </button>
@@ -250,7 +203,93 @@ const paymentTable = () => {
                   </td>
                 </tr>
               </tbody>
+                })
+              }
             </table>
+
+    )
+}
+  return (
+    <div>
+<>
+  {/* Table Section */}
+  <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    {/* Card */}
+    <div className="flex flex-col">
+      <div className="-m-1.5 overflow-x-auto">
+        <div className="p-1.5 min-w-full inline-block align-middle">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
+            {/* Header */}
+            <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+                  Payments
+                </h2>
+                <p className="text-sm text-gray-600 dark:text-neutral-400">
+                  view all payments
+                </p>
+              </div>
+            
+            </div>
+            {/* End Header */}
+            {/* Accordion */}
+            <div className="border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-900 dark:border-neutral-700">
+              <button
+                type="button"
+                className="hs-collapse-toggle py-4 px-6 w-full flex items-center gap-2 font-semibold text-gray-800 dark:text-neutral-200"
+                id="hs-basic-collapse"
+                data-hs-collapse="#hs-as-table-collapse"
+              >
+                <svg
+                  className="hs-collapse-open:rotate-90 size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+                Insights
+              </button>
+              <div
+                id="hs-as-table-collapse"
+                className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
+                aria-labelledby="hs-basic-collapse"
+              >
+                <div className="pb-4 px-6">
+                  <div className="flex items-center space-x-2">
+                    <span className="size-5 flex justify-center items-center rounded-full bg-blue-600 text-white dark:bg-blue-500">
+                      <svg
+                        className="flex-shrink-0 size-3.5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span className="text-sm text-gray-800 dark:text-neutral-400">
+                      There are no insights for this period.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* End Accordion */}
+            {/* Table */}
+            
+              
             {/* End Table */}
           
           </div>
