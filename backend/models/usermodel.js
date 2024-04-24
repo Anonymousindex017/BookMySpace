@@ -9,7 +9,8 @@ const mySchema = new Schema({
     password: String,
     createdAt: {
         type: Date,
-        default: Date.now()}
+        default: Date.now()},
+        avatar:{type:String, default:"profile.jpg"}
 });
 
 module.exports= model('user', mySchema);

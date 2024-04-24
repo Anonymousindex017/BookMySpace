@@ -76,8 +76,11 @@ return (
                   <div className="flex items-center gap-5">
                     <img
                       className="inline-block size-16 rounded-full ring-2 ring-white dark:ring-gray-800"
-                      src="../assets/img/160x160/img1.jpg"
-                      alt="Image Description"
+                      src={
+                        currentUser.avatar &&
+                        `${"http://localhost:5000"}/${currentUser.avatar}`
+                      }
+                      alt=""
                     />
                     <div className="flex gap-x-2">
                       <div>
@@ -113,7 +116,7 @@ return (
                     htmlFor="af-account-full-name"
                     className="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200"
                   >
-                    Full name
+                    {currentUser.firstName}{currentUser.lastName}
                   </label>
                   <div className="hs-tooltip inline-block">
                     <button type="button" className="hs-tooltip-toggle ms-1">
@@ -133,7 +136,7 @@ return (
                       className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible w-40 text-center z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700"
                       role="tooltip"
                     >
-                      Displayed on public forums, such as Preline
+                     {currentUser.email}
                     </span>
                   </div>
                 </div>
