@@ -10,7 +10,7 @@ const mySchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now()},
-        avatar:{type:String, default:"profile.jpg"}
+        avatar:{type:String, default:"download.png"}
 });
 
 module.exports= model('user', mySchema);
