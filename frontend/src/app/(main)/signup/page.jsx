@@ -75,16 +75,17 @@ const signup = () => {
               </h1>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                 Already have an account?
-                <a
+                {/* {<a
                   className="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="/login"
                 >
                   Sign in here
-                </a>
+                </a>} */}
               </p>
             </div>
             <div className="mt-5">
-              <button
+              <a
+              href='/login'
                 type="button"
                 className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
               >
@@ -112,8 +113,8 @@ const signup = () => {
                     fill="#EB4335"
                   />
                 </svg>
-                Sign up with Google
-              </button>
+                Sign in here
+              </a>
               <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ms-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
                 Or
               </div>
@@ -349,7 +350,7 @@ const signup = () => {
                   </div>
 
                   {/* Checkbox */}
-                  <div className="flex items-center">
+                  {/* {<div className="flex items-center">
                     <div className="flex">
                       <input
                         id="rememberme"
@@ -360,7 +361,7 @@ const signup = () => {
                       />
                     </div>
                     <div className="ms-3">
-                      <label
+                     { <label
                         htmlFor="remember-me"
                         className="text-sm dark:text-white"
                       >
@@ -371,9 +372,9 @@ const signup = () => {
                         >
                           Terms and Conditions
                         </a>
-                      </label>
+                      </label>}
                     </div>
-                  </div>
+                  </div>} */}
                   {/* End Checkbox */}
                   <button
                     type="submit"

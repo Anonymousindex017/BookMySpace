@@ -255,7 +255,25 @@ const spaceDetails = () => {
                                     />
                                   </svg>
                                 </span>
-                                Rs1000
+                                Rs{spaceData.price} / Day
+                              </li>
+                             {/* { <li className="flex items-start">
+                                <span className="mr-1">
+                                  <svg
+                                    className="w-5 h-5 mt-px text-deep-purple-accent-400"
+                                    stroke="currentColor"
+                                    viewBox="0 0 52 52"
+                                  >
+                                    <polygon
+                                      strokeWidth={4}
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      fill="none"
+                                      points="29 13 14 29 25 29 23 39 38 23 27 23"
+                                    />
+                                  </svg>
+                                </span>
+                                
                               </li>
                               <li className="flex items-start">
                                 <span className="mr-1">
@@ -273,26 +291,8 @@ const spaceDetails = () => {
                                     />
                                   </svg>
                                 </span>
-                                Rs3000
-                              </li>
-                              <li className="flex items-start">
-                                <span className="mr-1">
-                                  <svg
-                                    className="w-5 h-5 mt-px text-deep-purple-accent-400"
-                                    stroke="currentColor"
-                                    viewBox="0 0 52 52"
-                                  >
-                                    <polygon
-                                      strokeWidth={4}
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      fill="none"
-                                      points="29 13 14 29 25 29 23 39 38 23 27 23"
-                                    />
-                                  </svg>
-                                </span>
-                                Rs5000
-                              </li>
+                                
+                              </li>} */}
                             </ul>
                             <a
                               href="/"
@@ -327,9 +327,10 @@ const spaceDetails = () => {
             <div className='grid gap-4 grid-cols-2'>
               <div className='col-6'>
                 <h2>Quick Info</h2>
-                <li>Max Capacity : 4 People</li>
+                
                 <li>Booking : On Host Confirmation</li>
-                <li></li>
+                <li> BreakFast service is free</li>
+                
               </div>
               <div className='col-6'>
                 <h2>Open Hours</h2>

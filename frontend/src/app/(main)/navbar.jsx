@@ -82,12 +82,12 @@ const Navbar = () => {
                 >
                   Home Page
                 </a>
-                <a
+               {/* { <a
                   className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                   href="/user/profile"
                 >
                  My Profile
-                </a>
+                </a>} */}
                 <a
                   className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                   href="/about"
@@ -100,12 +100,19 @@ const Navbar = () => {
                 >
                   Contact Us
                 </a>
+          <a
+            className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            href="/user/profile/feedback"
+          >
+            Feedback
+          </a>
+        
 
                 <form className="max-w-lg ml-auto">
                   <div className="flex">
-                  <button>
+                  {/* {<button>
                     Log Out
-                    </button>
+                    </button>} */}
                   </div>
                 </form>
               </div>
