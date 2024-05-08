@@ -179,10 +179,9 @@ const managespace = () => {
     })
   }
 
-
   return (
     <div>
-      <>
+    
         {/* Table Section */}
         <div className="max-w-[87rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           {/* Card */}
@@ -218,20 +217,16 @@ const managespace = () => {
                     </a>
                   </div>
                   {/* End Header */}
+          {
+            displaySpace()
+          }
                 </div>
               </div>
             </div>
           </div>
           {/* End Card */}
         </div>
-
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-          {
-            displaySpace()
-          }
-        </div>
         {/* End Table Section */}
-      </>
     </div>
   )
 }

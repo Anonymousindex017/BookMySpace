@@ -125,9 +125,9 @@ const Navbar = () => {
           </a>
           <a
             className="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300"
-            href="#"
+            href="user/profile/myorder"
           >
-            Reviews
+            My Booking
           </a>
           <a
             className="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300"

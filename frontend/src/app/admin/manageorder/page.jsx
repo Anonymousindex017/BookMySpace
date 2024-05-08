@@ -277,14 +277,6 @@ const manageOrder = () => {
                   {/* Footer */}
                   <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
                     <div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        <span className="font-semibold text-gray-800 dark:text-gray-200">
-                          9
-                        </span>{" "}
-                        results
-                      </p>
-                    </div>
-                    <div>
                       <div className="inline-flex gap-x-2">
                         <button
                           type="button"

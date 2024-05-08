@@ -66,7 +66,7 @@ const Browse = () => {
                     </div>
                     <Disclosure>
                       <Disclosure.Button className="py-2">
-                        Show More
+                        Common Facilities
                       </Disclosure.Button>
                       <Disclosure.Panel className="text-gray-500">
                         <ul role="list" className="space-y-5 my-7">
@@ -91,11 +91,12 @@ const Browse = () => {
                         </ul>
                       </Disclosure.Panel>
                     </Disclosure>
+                    <div>
                     <Link
                       href={"/space-details/" + space._id}
                       className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
-                      Read more
+                      More Info
                       <svg
                         className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                         aria-hidden="true"
@@ -112,6 +113,7 @@ const Browse = () => {
                         />
                       </svg>
                     </Link>
+                    </div>
                   </div>
                 </div>
               )
