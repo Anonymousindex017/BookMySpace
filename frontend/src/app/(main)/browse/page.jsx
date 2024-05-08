@@ -46,7 +46,6 @@ const Browse = () => {
           </svg>
         </button>
         <div className='grid grid-cols-3 gap-10'>
-
           {
             spacelist.map((space) => {
               return (
@@ -55,12 +54,10 @@ const Browse = () => {
                     <img className="card-img rounded-t-lg" src={`${process.env.NEXT_PUBLIC_API_URL}/${space.image}`} alt="" />
                   </Link>
                   <div className='p-4 sm:p-8'>
-
                     <h5 className="mb-4 text-xl font-medium text-white dark:text-white">
                       {space.title}
                     </h5>
                     <div className="flex items-baseline text-gray-900 dark:text-white">
-
                       <span className="text-3xl font-semibold">Rs</span>
                       <span className="text-5xl font-extrabold tracking-tight">{space.price}</span>
                       <span className="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">
