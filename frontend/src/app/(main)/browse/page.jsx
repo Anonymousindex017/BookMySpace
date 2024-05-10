@@ -51,12 +51,15 @@ const Browse = () => {
               return (
                 <div className="my-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                   <Link  href={"/space-details/" + space._id}>
-                    <img className="card-img rounded-t-lg" src={`${process.env.NEXT_PUBLIC_API_URL}/${space.image}`} alt="" />
+                    <img className="card-img mx-auto w-full rounded-t-lg" src={`${process.env.NEXT_PUBLIC_API_URL}/${space.image}`} alt="" />
                   </Link>
                   <div className='p-4 sm:p-8'>
                     <h5 className="mb-4 text-xl font-medium text-white dark:text-white">
                       {space.title}
                     </h5>
+                      <span className="ms-1 text-smsll font-normal text-gray-500 dark:text-gray-400">
+                        {space.city}
+                      </span>
                     <div className="flex items-baseline text-gray-900 dark:text-white">
                       <span className="text-3xl font-semibold">Rs</span>
                       <span className="text-5xl font-extrabold tracking-tight">{space.price}</span>
