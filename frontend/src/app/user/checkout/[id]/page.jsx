@@ -103,47 +103,73 @@ function CheckoutPage() {
                             )
                         }
                     </div>
-                    <div className='grid grid-cols-2'>
-                        <h4>Your Address</h4>
-                        <div className='flex flex-gap-5'>
-                            <input
-                                ref={pincodeRef}
-                                placeholder='Pin Code'
-                                type={Number}
-                                w={'100%'}
-                                maxLength={6}
-                                minLength={6}
-                                variant='filled'
-                            />
-                            <input
-                                ref={contactRef}
-                                placeholder='Contact'
-                                w={'100%'}
-                                label="Contact"
-                                maxLength={10}
-                                variant='filled'
-                            />
-                        </div>
-                        <textarea
-                            ref={addressRef}
-                            label="User Address"
-                            variant='filled'
-                            w={'100%'}
-                            
-                        ></textarea>
+                    <>
+                        {/* Contact Us */}
+                        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                            <div className="mt-12 max-w-lg mx-auto">
+                                {/* Card */}
+                                <div className="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-neutral-700">
 
-                    </div>
-            <button className='' onClick={getPaymentIntent}>Pay Now</button>
-            {
-                clientSecret && (
-                    <Elements stripe={stripePromise} options={{
-                        clientSecret,
-                        appearance
-                    }}>
-                        <PaymentGateway spaceid={id} />
-                    </Elements>
-                )
-            }
+                                    <form>
+                                        <div className="grid gap-4 lg:gap-6">
+                                            {/* Grid */}
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+
+                                                <div className='grid grid-cols-2'>
+                                                    <h4>Your Address</h4>
+                                                    <div className='flex flex-gap-5'>
+                                                        <input
+                                                            ref={pincodeRef}
+                                                            placeholder='Pin Code'
+                                                            type={Number}
+                                                            w={'100%'}
+                                                            maxLength={6}
+                                                            minLength={6}
+                                                            variant='filled'
+                                                        />
+                                                        <input
+                                                            ref={contactRef}
+                                                            placeholder='Contact'
+                                                            w={'100%'}
+                                                            label="Contact"
+                                                            maxLength={10}
+                                                            variant='filled'
+                                                        />
+                                                    </div>
+                                                    <textarea
+                                                        ref={addressRef}
+                                                        label="User Address"
+                                                        variant='filled'
+                                                        w={'100%'}
+                                                        rows={'100%'}
+                                                        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                                    ></textarea>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        {/* End Grid */}
+                                    </form>
+                                </div>
+                                {/* End Card */}
+                            </div>
+                        </div>
+                        {/* End Contact Us */}
+                    </>
+
+
+                    <button className='focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800' onClick={getPaymentIntent}>Pay Now</button>
+                    {
+                        clientSecret && (
+                            <Elements stripe={stripePromise} options={{
+                                clientSecret,
+                                appearance
+                            }}>
+                                <PaymentGateway spaceid={id} />
+                            </Elements>
+                        )
+                    }
                 </>
             </div>
         </div>
