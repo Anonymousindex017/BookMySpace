@@ -12,7 +12,7 @@ const signupValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Enter Your Email Address'),
   contact: Yup.number().min(10, "Phone number must be at least 10 digits").required("Contact Number is Required"),
   password: Yup.string().min(6, 'minimum 6 character!').max(12, 'maximun 12 character').required('make a strong password')
-    .matches(/[A-Z]/, 'Password mudt contain uppercase letter')
+    .matches(/[A-Z]/, 'Password must contain uppercase letter')
     .matches(/[a-z]/, 'Password must contain lowercase letter')
     .matches(/[0-9]/, 'Password must contain number'),
   cpassword: Yup.string().required('required same password')
